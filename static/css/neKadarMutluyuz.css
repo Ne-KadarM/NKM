@@ -1,0 +1,69 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Sayfanın sınırlarını aşan içerikleri gizle */
+  }
+  
+  svg {
+    fill: #ffffff;
+    max-width: 100%;
+    max-height: 100%;
+  
+  }
+  
+  body {
+    background-color: #3498db; /* Sayfanın arka plan rengi */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    display: flex;
+  }
+  
+  .harita-container {
+    flex: 1;
+    position: relative;
+  }
+  
+  .veri-listesi {
+    width: 250px; /* veya istediğiniz genişlik */
+    background-color: #ecf0f1; /* arkaplan rengi */
+    padding: 25px;
+    overflow-y: auto; /* içeriğin aşan kısımları için kaydırma çubuğu ekler */
+    margin-left: 150px;
+    z-index: 2;
+  }
+  
+  path:hover {
+    fill: #2c3e50;
+  }
+  
+  .pano {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    background: linear-gradient(to right, #ff6347, #ff2b47); /* Canlı gradyan arka plan */
+    color: #fff;
+    font-family: 'Arial', sans-serif; 
+    font-size: 20px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 15px;
+    display: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Hafif bir gölge ekleyin */
+    z-index: 1;
+  }
+  
+  /* Üzerine gelindiğinde ülke rengini değiştir ve arka plan rengini güncelle */
+  path:hover + .pano {
+    background: linear-gradient(to right, #ff8c00, #ff6347); /* Yeni gradyan arka plan */
+  }
+  
+  /* Daha iyi kullanıcı deneyimi için yumuşak bir geçiş ekleyin */
+  .transition {
+    transition: all 0.3s ease;
+  }
+  

@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endonezya Mutluluk Endeksi</title>
+    <link rel="stylesheet" href="static\css\Detay.css">
+    <style>
+      
+        #map-container {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        #map {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;}
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div id="left-container">
+            <h2>Endonezya</h2>
+            <div id="map-container">
+                <img id="map" src="static\css\Endonezya.png" alt="ABD Haritası">
+            </div>
+            <div id="text-container">
+                <div class="info">
+                    <h3>Son Anket Değerleri</h3>
+                    <p>
+                        <ul>
+                            {% for data in degerler %}
+                                <li>
+                                    {{data.year}}
+                                    {{"Ülke İsmi : "}}{{ data.country_name}}
+                                    {{"Ülke İso-Alpha Kodu : "}}{{  data.iso_alpha}}
+                                    {{"Mutluluk Endeksi : "}}{{  data.happiness_score}}
+                                    {{"Sosyal Destek : "}}{{  data.social_support}}
+                                    {{"Sağlıklı Yaşam Beklentisi : "}}{{  data.healthy_life_expectancy_at_birth}}
+                                    {{"Seçim Özgürlüğü : " }}{{ data.freedom_to_make_life_choices}}
+                                    {{"Cömertlik : "}}{{  data.generosity}}
+                                    {{"Yolsuzluk Algısı : "}}{{  data.perceptions_of_corruption}}
+                                    {{"Pozitif Efekt : "}}{{  data.positive_affect}}
+                                    {{"Negatif Efekt : " }}{{ data.negative_affect}}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="right-container">
+            <div class="image">
+                <h3>Yıllara göre mutluluk endeksleri (1-10 değer aralığında)</h3>
+                <img src="static/img/Endonezya_score.png" alt="Yıllara göre skor tablosu">
+            </div>
+            <div class="image">
+                <h3>Yıllara göre beklenen sağlıklı yaşam süresi (Yıl boyutunda)</h3>
+                <img src="static/img/Endonezya_life.png" alt="Yıllara göre yaşam tablosu">
+            </div>
+            <div class="image">
+                <h3>Yıllara göre Gayri Safi Yurt İçi Hasıla değerleri</h3>
+                <img src="static/img/Endonezya_gsyih.png" alt="Yıllara göre gelir tablosu">
+            </div>
+            <div class="image">
+                <h3>Yıllara göre Sosyal Destek değerleri</h3>
+                <img src="static/img/Endonezya_support.png" alt="Yıllara göre destek tablosu">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

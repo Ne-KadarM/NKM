@@ -1,0 +1,160 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABD Mutluluk Endeksi</title>
+    <link rel="stylesheet" href="{% static 'css/Detay.css' %}">
+    <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        #container {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            box-sizing: border-box;
+            background-color:#47a8b7;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #left-container {
+            flex: 2;
+            min-width: 250px;
+            box-sizing: border-box;
+            border-right: 2px solid #ddd;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #47a8b7;
+            color: #fff;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        #left-container h2 {
+            margin-bottom: 10px;
+        }
+
+        #map-container {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        #map {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        #text-container {
+            flex: 3;
+            min-width: inherit;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .info {
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        #right-container {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background-color: #f9f9f9;
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .image {
+            width: 48%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        .image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div id="left-container">
+            <h2>ABD</h2>
+            <div id="map-container">
+                <img id="map" src="static\img\ABD.png" alt="ABD Haritası">
+            </div>
+            <div id="text-container">
+                <div class="info">
+                    <h3>Son Anket Değerleri</h3>
+                    <p>
+                        <ul>
+                            {% for data in degerler %}
+                                <li>
+                                {{data.year}}
+                                {{"Ülke İsmi : "}}{{ data.country_name}}
+                                {{"Ülke İso-Alpha Kodu : "}}{{  data.iso_alpha}}
+                                {{"Mutluluk Endeksi : "}}{{  data.happiness_score}}
+                                {{"Sosyal Destek : "}}{{  data.social_support}}
+                                {{"Sağlıklı Yaşam Beklentisi : "}}{{  data.healthy_life_expectancy_at_birth}}
+                                {{"Seçim Özgürlüğü : " }}{{ data.freedom_to_make_life_choices}}
+                                {{"Cömertlik : "}}{{  data.generosity}}
+                                {{"Yolsuzluk Algısı : "}}{{  data.perceptions_of_corruption}}
+                                {{"Pozitif Efekt : "}}{{  data.positive_affect}}
+                                {{"Negatif Efekt : " }}{{ data.negative_affect}}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="right-container">
+            <div class="image">
+                <h3>Yıllara göre mutluluk endeksleri (1-10 değer aralığında)</h3>
+                <img src="static/img/ABD_score.png" alt="Yıllara göre skor tablosu">
+            </div>
+            <div class="image">
+                <h3>Yıllara göre beklenen sağlıklı yaşam süresi (Yıl boyutunda)</h3>
+                <img src="static/img/ABD_life.png" alt="Yıllara göre yaşam tablosu">
+            </div>
+            <div class="image">
+                <h3>Yıllara göre Gayri Safi Yurt İçi Hasıla değerleri</h3>
+                <img src="static/img/ABD_gsyih.png" alt="Yıllara göre gelir tablosu">
+            </div>
+            <div class="image">
+                <h3>Yıllara göre Sosyal Destek değerleri</h3>
+                <img src="static/img/ABD_support.png" alt="Yıllara göre destek tablosu">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
